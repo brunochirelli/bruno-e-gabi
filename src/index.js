@@ -3,13 +3,19 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import ReduxProvider from "./redux/ReduxProvider";
-import { CssBaseline } from "@material-ui/core";
+import { CssBaseline, ThemeProvider } from "@material-ui/core";
+import { ThemeProvider as StyledTheme } from "styled-components";
+import theme from "./theme/themes";
 
 ReactDOM.render(
   <React.StrictMode>
     <ReduxProvider>
-      <CssBaseline />
-      <App />
+      <ThemeProvider theme={theme}>
+        <StyledTheme theme={theme}>
+          <CssBaseline />
+          <App />
+        </StyledTheme>
+      </ThemeProvider>
     </ReduxProvider>
   </React.StrictMode>,
   document.getElementById("root")
