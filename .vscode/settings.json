@@ -1,7 +1,8 @@
 {
-    "eslint.options": {
-        "ignorePattern": [
-            "!src/*"
-        ],
-    }
+  "eslint.options": {
+    "ignorePattern": ["!src/*"]
+  },
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false
 }
