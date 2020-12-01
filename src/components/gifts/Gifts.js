@@ -21,7 +21,7 @@ const Gifts = () => {
     <Container>
       <Grid container spacing={3}>
         {gifts.map((gift) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={gift.id}>
+          <Grid item xs={12} sm={4} md={3} key={gift.id}>
             <GiftCard gift={gift} />
           </Grid>
         ))}
