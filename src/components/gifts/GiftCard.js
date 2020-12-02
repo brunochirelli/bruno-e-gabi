@@ -50,9 +50,13 @@ const FancyCard = styled(Grid)`
     }
 
     .product-name {
-      margin: 0.5rem 0;
-      font-size: 1.45rem;
-      line-height: 1.2;
+      margin: 1rem 0 0.5rem 0;
+
+      a {
+        font-size: 1.45rem;
+        line-height: 1.2;
+        text-decoration: none;
+      }
     }
 
     .product-price {
@@ -110,9 +114,8 @@ const GiftCard = ({ gift }) => {
           <Typography variant="caption" className="category">
             Eletrodoméstico
           </Typography>
-          <Box>
+          <Box className="product-name">
             <Typography
-              className="product-name"
               variant="body1"
               component={Link}
               to={`/presentes/${gift.productName}`}

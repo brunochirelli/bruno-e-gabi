@@ -18,8 +18,8 @@ const Gifts = () => {
   }
 
   return (
-    <Container>
-      <Grid container spacing={3}>
+    <Container style={{ marginTop: "1rem" }}>
+      <Grid container spacing={2}>
         {gifts.map((gift) => (
           <Grid item xs={12} sm={4} md={3} key={gift.id}>
             <GiftCard gift={gift} />
