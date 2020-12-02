@@ -6,14 +6,26 @@ const epilogue = "'Epilogue', sans-serif";
 
 export const defaultTheme = createMuiTheme({
   palette: {
-    text: {
-      primary: colorPrimary,
+    primary: {
+      main: colorPrimary,
     },
+
     background: {
       default: "#FFFAF6",
     },
   },
   typography: {
+    h3: {
+      fontFamily: epilogue,
+      color: colorPrimary,
+    },
+    h5: {
+      fontFamily: epilogue,
+      color: colorPrimary,
+    },
+    h6: {
+      fontFamily: cardo,
+    },
     body1: {
       fontFamily: cardo,
       color: colorPrimary,
