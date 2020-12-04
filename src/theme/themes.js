@@ -1,4 +1,4 @@
-import { createMuiTheme, responsiveFontSizes } from "@material-ui/core";
+import { unstable_createMuiStrictModeTheme as createMuiTheme } from "@material-ui/core";
 
 const colorPrimary = "#666360";
 const cardo = "'Cardo', serif";
