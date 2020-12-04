@@ -8,18 +8,14 @@ import CartItem from "./CartItem";
 import CartSummary from "./CartSummary";
 import CartHelperLink from "./CartHelperLink";
 
-const FancyCart = styled(Container)`
-  .title {
-    padding: 2rem 0;
-    font-weight: 500;
-    letter-spacing: 0.3rem;
-    text-transform: uppercase;
-  }
-
-  .back-link {
-    color: ${({ theme }) => theme.palette.primary.main};
-  }
-`;
+/**
+ * Cart Page
+ *
+ * @component
+ * @version       0.1.0
+ * @description   Map all Cart Items and proceed checkout
+ *
+ */
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -43,5 +39,18 @@ const Cart = () => {
     </FancyCart>
   );
 };
+
+const FancyCart = styled(Container)`
+  .title {
+    padding: 2rem 0;
+    font-weight: 500;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+  }
+
+  .back-link {
+    color: ${({ theme }) => theme.palette.primary.main};
+  }
+`;
 
 export default Cart;

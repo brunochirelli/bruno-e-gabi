@@ -1,3 +1,6 @@
+import PropTypes from "prop-types";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 import {
@@ -7,10 +10,17 @@ import {
   SwipeableDrawer,
   Typography,
 } from "@material-ui/core";
-import { Link, useLocation } from "react-router-dom";
-import { useEffect } from "react";
 
-const MenuOverlay = ({ open, setOpen, history }) => {
+/**
+ * Menu Overlay
+ *
+ * @component
+ * @version       0.1.0
+ * @description   Overlay menu with links
+ *
+ */
+
+const MenuOverlay = ({ open, setOpen }) => {
   const location = useLocation();
 
   useEffect(() => {
@@ -69,5 +79,10 @@ const FancyOverlay = styled(Box)`
     width: 40vw;
   }
 `;
+
+MenuOverlay.propTypes = {
+  open: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired,
+};
 
 export default MenuOverlay;

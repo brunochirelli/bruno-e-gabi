@@ -1,8 +1,19 @@
-import { Container, Grid, LinearProgress } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+import { Container, Grid, LinearProgress } from "@material-ui/core";
+
 import { fetchGifts } from "./fetchGifts";
 import GiftCard from "./GiftCard";
+
+/**
+ * Gifts Index Page
+ *
+ * @component
+ * @version       0.1.0
+ * @description   Gifts page to handle a index of all gifts
+ *
+ */
 
 const Gifts = () => {
   const dispatch = useDispatch();

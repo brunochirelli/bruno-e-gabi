@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
 import {
   Box,
   Button,
@@ -7,11 +10,19 @@ import {
   LinearProgress,
   Typography,
 } from "@material-ui/core";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+
 import { addGift } from "../cart/cartSlice";
 
-const GiftSingle = ({ history }) => {
+/**
+ * Single Gift Page
+ *
+ * @component
+ * @version       0.1.0
+ * @description   Page to handle information about one gift
+ *
+ */
+
+const GiftSingle = () => {
   const [actualGift, setActualGift] = useState(null);
   const gifts = useSelector((state) => state.gifts.products);
   const { gift } = useParams();

@@ -1,5 +1,14 @@
 import { Box, Button, Container, Typography } from "@material-ui/core";
 
+/**
+ * Thank Yout Page
+ *
+ * @component
+ * @version       0.1.0
+ * @description   Page thats redirect a user if the payment was succesfull
+ *
+ */
+
 const ThankYou = () => {
   return (
     <Box marginY={20}>

@@ -1,9 +1,20 @@
-import { Container, Grid, LinearProgress, Typography } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
-import { toTitleCase } from "../../utils/toTitleCase";
+
+import { Container, Grid, LinearProgress, Typography } from "@material-ui/core";
+
 import GiftCard from "./GiftCard";
+import { toTitleCase } from "../../utils/toTitleCase";
+
+/**
+ * Single Category Page
+ *
+ * @component
+ * @version       0.1.0
+ * @description   Pages to index all products for a certain category
+ *
+ */
 
 const CategorySingle = () => {
   const gifts = useSelector((state) => state.gifts.products);

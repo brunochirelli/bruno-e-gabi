@@ -5,17 +5,14 @@ import { Button, Link } from "@material-ui/core";
 
 import Header from "./Header";
 
-const SkipButton = styled(Button)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: none;
-
-  &:focus {
-    z-index: 10000;
-    display: block;
-  }
-`;
+/**
+ * Default Layout
+ *
+ * @component
+ * @version       0.1.0
+ * @description   Default layout to separate header, footer and main content
+ *
+ */
 
 const Layout = ({ children }) => {
   const [headerHeight, setHeaderHeight] = useState(56);
@@ -43,5 +40,17 @@ const Layout = ({ children }) => {
     </>
   );
 };
+
+const SkipButton = styled(Button)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+
+  &:focus {
+    z-index: 10000;
+    display: block;
+  }
+`;
 
 export default Layout;

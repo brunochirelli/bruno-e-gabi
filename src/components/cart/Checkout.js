@@ -1,4 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import {
   Box,
@@ -6,9 +8,18 @@ import {
   Container,
   Typography,
 } from "@material-ui/core";
-import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+
 import { cleanCart } from "./cartSlice";
+
+/**
+ * Checkout Page
+ *
+ * @component
+ * @version       0.1.0
+ * @description   Page checkout tha handles information and redux logic to
+ *                proccess the cart
+ *
+ */
 
 const Checkout = () => {
   const [order, setOrder] = useState(false);

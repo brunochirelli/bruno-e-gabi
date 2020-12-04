@@ -1,10 +1,21 @@
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
-
-import { Box, Button, Grid, Typography } from "@material-ui/core";
-import { toCurrencyFormat } from "../../utils/toCurrencyFormat";
 import { Link } from "react-router-dom";
 
-const CartSummary = ({ buyButtonText = "Comprar", checkout }) => {
+import { Box, Button, Grid, Typography } from "@material-ui/core";
+
+import { toCurrencyFormat } from "../../utils/toCurrencyFormat";
+
+/**
+ * Cart Summary
+ *
+ * @component
+ * @version       0.1.0
+ * @description   Display the total of the cart and a custom button
+ *
+ */
+
+const CartSummary = ({ buyButtonText, checkout }) => {
   const cart = useSelector((state) => state.cart);
 
   return (
@@ -33,6 +44,15 @@ const CartSummary = ({ buyButtonText = "Comprar", checkout }) => {
       </Grid>
     )
   );
+};
+
+CartSummary.propTypes = {
+  buyButtonText: PropTypes.string,
+  checkout: PropTypes.bool,
+};
+
+CartSummary.defaultProps = {
+  buyButtonText: "Comprar",
 };
 
 export default CartSummary;

@@ -1,10 +1,21 @@
-import { Grid, IconButton, Typography } from "@material-ui/core";
-import { Add, DeleteOutline, Remove } from "@material-ui/icons";
-import React from "react";
+import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
+
+import { Grid, IconButton, Typography } from "@material-ui/core";
+import { Add, DeleteOutline, Remove } from "@material-ui/icons";
+
 import { toCurrencyFormat } from "../../utils/toCurrencyFormat";
 import { updateQuantity } from "./cartSlice";
+
+/**
+ * Cart Item
+ *
+ * @component
+ * @version       0.1.0
+ * @description   Display single item in cart
+ *
+ */
 
 const CartItem = ({ gift, verticalControl }) => {
   const dispatch = useDispatch();
@@ -81,5 +92,10 @@ const FancyCartItem = styled(Grid)`
     padding: 0.1rem;
   }
 `;
+
+CartItem.propType = {
+  gift: PropTypes.object.isRequired,
+  verticalControl: PropTypes.bool,
+};
 
 export default CartItem;

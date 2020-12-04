@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
@@ -8,6 +9,15 @@ import { AddShoppingCart } from "@material-ui/icons";
 import { addGift } from "../cart/cartSlice";
 import { truncateText } from "../../utils/truncateText";
 import { toCurrencyFormat } from "../../utils/toCurrencyFormat";
+
+/**
+ * Gift Card
+ *
+ * @component
+ * @version       0.1.0
+ * @description   Card to handles information about one gift
+ *
+ */
 
 const GiftCard = ({ gift, hideCategory, excerptLength = 40 }) => {
   const dispatch = useDispatch();
@@ -149,5 +159,15 @@ const FancyCard = styled(Grid)`
     }
   }
 `;
+
+GiftCard.propTypes = {
+  gift: PropTypes.object.isRequired,
+  hideCategory: PropTypes.bool,
+  excerptLength: PropTypes.number,
+};
+
+GiftCard.defaultProps = {
+  excerptLength: 40,
+};
 
 export default GiftCard;

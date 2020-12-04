@@ -1,17 +1,28 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import {
   AppBar,
   Badge,
-  Box,
   IconButton,
   Toolbar,
   Typography,
 } from "@material-ui/core";
 import { Menu, ShoppingCart } from "@material-ui/icons";
-import { useSelector } from "react-redux";
-import { Link, useHistory, useLocation } from "react-router-dom";
+
 import CartDrawer from "../cart/CartDrawer";
 import MenuOverlay from "./MenuOverlay";
+
+/**
+ * Site Header
+ *
+ * @component
+ * @version       0.1.0
+ * @description   Header of the layout. Handles all the logic inside the header
+ *                included the menus states.
+ *
+ */
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -55,22 +66,29 @@ const Header = () => {
             Bruno e Gabi
           </Typography>
 
-          <IconButton
-            onClick={() =>
-              location.pathname === "/carrinho" ||
-              location.pathname === "/checkout"
-                ? null
-                : setOpen(!open)
-            }
-          >
-            <Badge
-              badgeContent={cart.products && cart.products.length}
-              color="primary"
-            >
-              <ShoppingCart />
-            </Badge>
-          </IconButton>
-          <CartDrawer open={open} setOpen={setOpen} />
+          {location.pathname === "/carrinho" ||
+          location.pathname === "/checkout" ? (
+            <div></div>
+          ) : (
+            <>
+              <IconButton
+                onClick={() =>
+                  location.pathname === "/carrinho" ||
+                  location.pathname === "/checkout"
+                    ? null
+                    : setOpen(!open)
+                }
+              >
+                <Badge
+                  badgeContent={cart.products && cart.products.length}
+                  color="primary"
+                >
+                  <ShoppingCart />
+                </Badge>
+              </IconButton>
+              <CartDrawer open={open} setOpen={setOpen} />
+            </>
+          )}
         </Toolbar>
       </AppBar>
     </>

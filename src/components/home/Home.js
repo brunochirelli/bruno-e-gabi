@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 import {
   Box,
   Button,
@@ -8,7 +10,6 @@ import {
   LinearProgress,
   Typography,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
 
 import { fetchGifts } from "../gifts/fetchGifts";
 import { getLastCategoryItem } from "../../utils/getLastCategoryItem";

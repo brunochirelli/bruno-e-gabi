@@ -1,8 +1,12 @@
+import PropTypes from "prop-types";
+import { Provider } from "react-redux";
+
 import {
   combineReducers,
   configureStore,
   getDefaultMiddleware,
 } from "@reduxjs/toolkit";
+
 import {
   persistStore,
   persistReducer,
@@ -15,10 +19,20 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
-import { Provider } from "react-redux";
 
 import cartReducer from "../components/cart/cartSlice";
 import giftsReducer from "../components/gifts/giftsSlice";
+
+/**
+ * Redux Provider with Persist
+ *
+ * @component
+ * @version       0.1.0
+ * @description   Configure a reducer and a persistent state with redux-persist.
+ *                This provider means to handle all Redux provider and
+ *                middlewares logic.
+ *
+ */
 
 const rootReducer = combineReducers({
   cart: cartReducer,
@@ -52,6 +66,10 @@ const ReduxProvider = ({ children }) => {
       </PersistGate>
     </Provider>
   );
+};
+
+ReduxProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default ReduxProvider;
