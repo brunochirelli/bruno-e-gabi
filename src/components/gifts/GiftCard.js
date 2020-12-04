@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 
@@ -6,8 +6,58 @@ import { Box, Grid, IconButton, Typography } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 
 import { addGift } from "../cart/cartSlice";
-import { truncateText } from "../../utils/utils";
-import { Link } from "react-router-dom";
+import { truncateText } from "../../utils/truncateText";
+import { toCurrencyFormat } from "../../utils/toCurrencyFormat";
+
+const GiftCard = ({ gift, hideCategory, excerptLength = 40 }) => {
+  const dispatch = useDispatch();
+
+  return (
+    <FancyCard container>
+      <Grid item xs={6} sm={12}>
+        <Box className="image" component={Link} to={`/presentes/${gift.title}`}>
+          <img src={gift.image} alt="" />
+        </Box>
+      </Grid>
+      <Grid item xs={6} sm={12} className="text">
+        <div className="description">
+          {!hideCategory && (
+            <Typography
+              variant="caption"
+              className="category"
+              component={Link}
+              to={`/categorias/${gift.category}`}
+              arial-label="categoria"
+            >
+              {gift.category}
+            </Typography>
+          )}
+          <Box className="product-name">
+            <Typography
+              variant="body1"
+              component={Link}
+              to={`/presentes/${gift.title}`}
+              style={{ fontSize: "1.2rem" }}
+            >
+              {truncateText(gift.title, excerptLength)}
+            </Typography>
+          </Box>
+        </div>
+        <div className="actions">
+          <Typography className="product-price" aria-label="preço" tabIndex={0}>
+            {toCurrencyFormat(gift.price)}
+          </Typography>
+          <IconButton
+            className="add-to-cart"
+            onClick={() => dispatch(addGift(gift))}
+          >
+            <AddShoppingCart />
+          </IconButton>
+        </div>
+      </Grid>
+    </FancyCard>
+  );
+};
 
 const FancyCard = styled(Grid)`
   align-items: center;
@@ -19,6 +69,7 @@ const FancyCard = styled(Grid)`
   box-shadow: 0 3px 6px rgba(87, 39, 0, 0.05);
 
   .image {
+    display: block;
     height: 180px;
     margin: 1rem;
     overflow: hidden;
@@ -98,44 +149,5 @@ const FancyCard = styled(Grid)`
     }
   }
 `;
-
-const GiftCard = ({ gift }) => {
-  const dispatch = useDispatch();
-
-  return (
-    <FancyCard container>
-      <Grid item xs={6} sm={12}>
-        <div className="image">
-          <img src={gift.productImage.url} alt="" />
-        </div>
-      </Grid>
-      <Grid item xs={6} sm={12} className="text">
-        <div className="description">
-          <Typography variant="caption" className="category">
-            Eletrodoméstico
-          </Typography>
-          <Box className="product-name">
-            <Typography
-              variant="body1"
-              component={Link}
-              to={`/presentes/${gift.productName}`}
-            >
-              {truncateText(gift.productName, 48)}
-            </Typography>
-          </Box>
-        </div>
-        <div className="actions">
-          <Typography className="product-price">R$ {gift.price}</Typography>
-          <IconButton
-            className="add-to-cart"
-            onClick={() => dispatch(addGift(gift))}
-          >
-            <AddShoppingCart />
-          </IconButton>
-        </div>
-      </Grid>
-    </FancyCard>
-  );
-};
 
 export default GiftCard;
