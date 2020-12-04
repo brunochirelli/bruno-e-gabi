@@ -62,12 +62,22 @@ export const cartSlice = createSlice({
       const id = action.payload;
       state.products = state.products.filter((product) => product.id !== id);
     },
+    cleanCart: (state) => {
+      state.products = [];
+      state.total = 0;
+      state.orderPlaced = false;
+    },
   },
   extraReducers: {
     ...processCartRequest,
   },
 });
 
-export const { addGift, updateQuantity, removeGift } = cartSlice.actions;
+export const {
+  addGift,
+  updateQuantity,
+  removeGift,
+  cleanCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -18,7 +18,7 @@ const GiftSingle = ({ history }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setActualGift(gifts.find((item) => item.productName === gift));
+    setActualGift(gifts.find((item) => item.title === gift));
   }, []);
 
   if (!actualGift) return <LinearProgress />;
@@ -34,7 +34,7 @@ const GiftSingle = ({ history }) => {
           style={{ height: "50vh", background: "white" }}
         >
           <img
-            src={actualGift.productImage.url}
+            src={actualGift.image}
             alt=""
             width="100%"
             height="100%"
@@ -43,7 +43,7 @@ const GiftSingle = ({ history }) => {
         </Grid>
         <Grid item xs={12} sm={5} md={4} style={{ padding: "1rem" }}>
           <Typography>Categoria</Typography>
-          <Typography>{actualGift.productName}</Typography>
+          <Typography>{actualGift.title}</Typography>
           <Box
             display="flex"
             alignItems="center"

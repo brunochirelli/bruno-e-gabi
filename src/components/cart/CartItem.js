@@ -3,7 +3,57 @@ import { Add, DeleteOutline, Remove } from "@material-ui/icons";
 import React from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { toCurrencyFormat } from "../../utils/toCurrencyFormat";
 import { updateQuantity } from "./cartSlice";
+
+const CartItem = ({ gift, verticalControl }) => {
+  const dispatch = useDispatch();
+
+  return (
+    <FancyCartItem container justify="space-around" alignItems="center">
+      <Grid
+        item
+        xs={2}
+        style={{ background: "white", padding: "0.25rem", flexGrow: 1 }}
+      >
+        <img
+          src={gift.image}
+          alt=""
+          style={{ objectFit: "contain", width: "100%", height: "90px" }}
+        />
+      </Grid>
+      <Grid item xs={6} sm={6}>
+        <Typography tabIndex={0} noWrap>
+          {gift.title}
+        </Typography>
+        <Typography>{toCurrencyFormat(gift.price * gift.quantity)}</Typography>
+      </Grid>
+      <Grid item xs={1} sm={2}>
+        <FancyControl flexDirection={verticalControl && !!verticalControl}>
+          <IconButton
+            onClick={() =>
+              dispatch(updateQuantity({ id: gift.id, type: "decrement" }))
+            }
+            aria-label={gift.quantity === 1 ? "remover" : "retirar um"}
+          >
+            {gift.quantity === 1 ? <DeleteOutline /> : <Remove />}
+          </IconButton>
+          <div tabIndex={0} aria-label="quantidade atual">
+            {gift.quantity}
+          </div>
+          <IconButton
+            onClick={() =>
+              dispatch(updateQuantity({ id: gift.id, type: "increment" }))
+            }
+            aria-label="adicionar mais um"
+          >
+            <Add />
+          </IconButton>
+        </FancyControl>
+      </Grid>
+    </FancyCartItem>
+  );
+};
 
 const FancyControl = styled.div`
   display: flex;
@@ -12,7 +62,8 @@ const FancyControl = styled.div`
   justify-content: space-between;
 
   @media screen and (min-width: 600px) {
-    flex-direction: row;
+    flex-direction: ${({ flexDirection }) =>
+      flexDirection ? "column" : "row"};
   }
 `;
 
@@ -30,48 +81,5 @@ const FancyCartItem = styled(Grid)`
     padding: 0.1rem;
   }
 `;
-
-const CartItem = ({ gift }) => {
-  const dispatch = useDispatch();
-
-  return (
-    <FancyCartItem container justify="space-around" alignItems="center">
-      <Grid
-        item
-        xs={2}
-        style={{ background: "white", padding: "0.25rem", flexGrow: 1 }}
-      >
-        <img
-          src={gift.productImage.url}
-          alt=""
-          style={{ objectFit: "contain", width: "100%", height: "90px" }}
-        />
-      </Grid>
-      <Grid item xs={6} sm={6}>
-        <Typography>{gift.productName}</Typography>
-        <Typography>R$ {gift.price * gift.quantity}</Typography>
-      </Grid>
-      <Grid item xs={1} sm={2}>
-        <FancyControl>
-          <IconButton
-            onClick={() =>
-              dispatch(updateQuantity({ id: gift.id, type: "decrement" }))
-            }
-          >
-            {gift.quantity === 1 ? <DeleteOutline /> : <Remove />}
-          </IconButton>
-          <div>{gift.quantity}</div>
-          <IconButton
-            onClick={() =>
-              dispatch(updateQuantity({ id: gift.id, type: "increment" }))
-            }
-          >
-            <Add />
-          </IconButton>
-        </FancyControl>
-      </Grid>
-    </FancyCartItem>
-  );
-};
 
 export default CartItem;
