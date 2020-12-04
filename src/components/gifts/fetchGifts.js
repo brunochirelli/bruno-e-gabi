@@ -1,24 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import request, { gql } from "graphql-request";
 
 export const fetchGifts = createAsyncThunk("gifts/fetchGifts", () => {
-  return request(
-    process.env.REACT_APP_API_ENDPOINT,
-    gql`
-      query GetAllProducts {
-        products {
-          id
-          productName
-          price
-          addManyTimes
-          productImage {
-            url
-          }
-        }
-      }
-    `
-  )
-    .then((res) => res.products)
+  return fetch("https://fakestoreapi.com/products")
+    .then((res) => res.json())
     .catch((err) => console.error(err));
 });
 
