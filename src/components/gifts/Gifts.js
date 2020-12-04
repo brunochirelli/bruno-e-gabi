@@ -1,4 +1,4 @@
-import { Container, Grid } from "@material-ui/core";
+import { Container, Grid, LinearProgress } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGifts } from "./fetchGifts";
@@ -13,12 +13,10 @@ const Gifts = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!gifts.length) {
-    return <div>loading...</div>;
-  }
+  if (!gifts.length) return <LinearProgress />;
 
   return (
-    <Container style={{ marginTop: "1rem" }}>
+    <Container style={{ marginTop: "5rem" }}>
       <Grid container spacing={2}>
         {gifts.map((gift) => (
           <Grid item xs={12} sm={4} md={3} key={gift.id}>
