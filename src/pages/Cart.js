@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Container, Typography } from "@material-ui/core";
-
 import styled from "styled-components";
 
-import CartItem from "./CartItem";
-import CartSummary from "./CartSummary";
-import CartHelperLink from "./CartHelperLink";
+import { Container, Typography } from "@material-ui/core";
+
+import CartItem from "../components/cart/CartItem";
+import CartSummary from "../components/cart/CartSummary";
+import CartHelperLink from "../components/cart/CartHelperLink";
 
 /**
  * Cart Page

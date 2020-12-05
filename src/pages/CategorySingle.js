@@ -4,8 +4,8 @@ import { Redirect, useParams } from "react-router-dom";
 
 import { Container, Grid, LinearProgress, Typography } from "@material-ui/core";
 
-import GiftCard from "./GiftCard";
-import { toTitleCase } from "../../utils/toTitleCase";
+import GiftCard from "../components/gifts/GiftCard";
+import { toTitleCase } from "../utils/toTitleCase";
 
 /**
  * Single Category Page

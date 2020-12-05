@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Container, Grid, LinearProgress } from "@material-ui/core";
 
-import { fetchGifts } from "./fetchGifts";
-import GiftCard from "./GiftCard";
+import { fetchGifts } from "../redux/gifts/fetchGifts";
+import GiftCard from "../components/gifts/GiftCard";
 
 /**
  * Gifts Index Page

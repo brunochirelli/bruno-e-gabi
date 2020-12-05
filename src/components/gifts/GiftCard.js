@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { Box, Grid, IconButton, Typography } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 
-import { addGift } from "../cart/cartSlice";
+import { addGift } from "../../redux/cart/cartSlice";
 import { truncateText } from "../../utils/truncateText";
 import { toCurrencyFormat } from "../../utils/toCurrencyFormat";
 

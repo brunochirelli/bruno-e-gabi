@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Cart from "./components/cart/Cart";
-import Checkout from "./components/cart/Checkout";
-import ThankYou from "./components/cart/ThankYou";
-import CategorySingle from "./components/gifts/CategorySingle";
-import Gifts from "./components/gifts/Gifts";
-import GiftSingle from "./components/gifts/GiftSingle";
-import Home from "./components/home/Home";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import ThankYou from "./pages/ThankYou";
+import CategorySingle from "./pages/CategorySingle";
+import Gifts from "./pages/Gifts";
+import GiftSingle from "./pages/GiftSingle";
+import Home from "./pages/Home";
 import Layout from "./components/layout/Layout";
-import NotFound from "./components/layout/NotFound";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
