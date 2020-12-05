@@ -6,7 +6,7 @@ import { Grid, IconButton, Typography } from "@material-ui/core";
 import { Add, DeleteOutline, Remove } from "@material-ui/icons";
 
 import { toCurrencyFormat } from "../../utils/toCurrencyFormat";
-import { updateQuantity } from "./cartSlice";
+import { updateQuantity } from "../../redux/cart/cartSlice";
 
 /**
  * Cart Item

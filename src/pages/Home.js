@@ -11,8 +11,8 @@ import {
   Typography,
 } from "@material-ui/core";
 
-import { fetchGifts } from "../gifts/fetchGifts";
-import { getLastCategoryItem } from "../../utils/getLastCategoryItem";
+import { fetchGifts } from "../redux/gifts/fetchGifts";
+import { getLastCategoryItem } from "../utils/getLastCategoryItem";
 
 import homeImg from "./home.svg";
 

@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@material-ui/core";
 
-import { cleanCart } from "./cartSlice";
+import { cleanCart } from "../redux/cart/cartSlice";
 
 /**
  * Checkout Page

@@ -20,8 +20,8 @@ import {
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
 
-import cartReducer from "../components/cart/cartSlice";
-import giftsReducer from "../components/gifts/giftsSlice";
+import cartReducer from "./cart/cartSlice";
+import giftsReducer from "./gifts/giftsSlice";
 
 /**
  * Redux Provider with Persist

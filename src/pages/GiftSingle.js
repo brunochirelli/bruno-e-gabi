@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@material-ui/core";
 
-import { addGift } from "../cart/cartSlice";
+import { addGift } from "../redux/cart/cartSlice";
 
 /**
  * Single Gift Page
