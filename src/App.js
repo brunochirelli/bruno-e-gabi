@@ -9,12 +9,16 @@ import GiftSingle from "./pages/GiftSingle";
 import Home from "./pages/Home";
 import Layout from "./components/layout/Layout";
 import NotFound from "./pages/NotFound";
+import Guests from "./pages/Guests";
+import GuestsLogin from "./pages/GuestsLogin";
 
 const App = () => {
   return (
     <Router>
       <Layout>
         <Switch>
+          <Route exact path="/portal" component={GuestsLogin} />
+          <Route exact path="/familia" component={Guests} />
           <Route exact path="/presentes" component={Gifts} />
           <Route exact path="/presentes/:gift" component={GiftSingle} />
           <Route
