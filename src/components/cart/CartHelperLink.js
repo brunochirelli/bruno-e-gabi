@@ -23,13 +23,11 @@ const CartHelperLink = ({ setOpen }) => {
   return (
     <FancyHelperLink
       variant="h6"
-      className="back-link"
       onClick={() => {
         cart.products.length && location.pathname !== "/carrinho"
           ? setOpen(false)
           : history.push("/presentes");
       }}
-      style={{ cursor: "pointer" }}
     >
       <IconButton>
         <ArrowBack />
@@ -42,12 +40,11 @@ const CartHelperLink = ({ setOpen }) => {
 };
 
 const FancyHelperLink = styled(Typography)`
-  &.back-link {
-    display: block;
-    margin: 1.5rem auto 0.5rem;
-    color: ${({ theme }) => theme.palette.primary.main};
-    text-decoration: none;
-  }
+  display: block;
+  margin: 1.5rem auto 0.5rem;
+  color: ${({ theme }) => theme.palette.primary.main};
+  text-decoration: none;
+  cursor: pointer;
 `;
 
 CartHelperLink.propTypes = {
