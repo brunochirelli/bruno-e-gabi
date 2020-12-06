@@ -15,7 +15,7 @@ const GuestCard = ({ guest, updateFunction }) => {
   return (
     <FancyGuestCard
       component={Paper}
-      onClick={() => updateFunction(guest, "confirmed", !guest.confirmed)}
+      onClick={() => updateFunction(guest.id)}
       style={{ opacity: guest.confirmed ? 0.5 : 1 }}
     >
       <Box>

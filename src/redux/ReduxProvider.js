@@ -22,6 +22,7 @@ import { PersistGate } from "redux-persist/integration/react";
 
 import cartReducer from "./cart/cartSlice";
 import giftsReducer from "./gifts/giftsSlice";
+import guestsReducer from "./guests/guestsSlice";
 
 /**
  * Redux Provider with Persist
@@ -37,12 +38,14 @@ import giftsReducer from "./gifts/giftsSlice";
 const rootReducer = combineReducers({
   cart: cartReducer,
   gifts: giftsReducer,
+  guests: guestsReducer,
 });
 
 const persistConfig = {
   key: "root",
   version: 1,
   storage,
+  blacklist: ["guests"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

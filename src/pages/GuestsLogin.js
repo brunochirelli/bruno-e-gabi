@@ -9,7 +9,7 @@
  */
 
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 import {
   Box,
@@ -25,6 +25,8 @@ import {
   Typography,
 } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
+import { useDispatch } from "react-redux";
+import { getFamily } from "../redux/guests/guestsSlice";
 
 /**
  * Login Page
@@ -34,11 +36,13 @@ import { Visibility, VisibilityOff } from "@material-ui/icons";
  *
  */
 
-const GuestsLogin = () => {
+const GuestsLogin = (props) => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
 
+  const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
 
   const handlePassword = (event) => {
     setPassword(event.target.value);
@@ -48,8 +52,8 @@ const GuestsLogin = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("verify password and connect to API");
-    history.push("/familia");
+    dispatch(getFamily());
+    history.push(location.state.from.pathname);
   };
 
   return (
