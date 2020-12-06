@@ -64,7 +64,7 @@ const Header = () => {
             to="/"
             style={{ color: "black", textDecoration: "none" }}
           >
-            Bruno e Gabi
+            Gabi e Bruno
           </Typography>
 
           {location.pathname === "/carrinho" ||
