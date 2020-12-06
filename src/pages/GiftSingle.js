@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -12,6 +12,8 @@ import {
 } from "@material-ui/core";
 
 import { addGift } from "../redux/cart/cartSlice";
+import { fetchGifts } from "../redux/gifts/fetchGifts";
+import { toCurrencyFormat } from "../utils/toCurrencyFormat";
 
 /**
  * Single Gift Page
@@ -28,8 +30,26 @@ const GiftSingle = () => {
   const { gift } = useParams();
   const dispatch = useDispatch();
 
+  /**
+   * Subscribe to gifts to check changes and execute the find
+   */
   useEffect(() => {
-    setActualGift(gifts.find((item) => item.title === gift));
+    let findOne = gifts.find((item) => item.title.trim() === gift.trim());
+    setActualGift(findOne);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gifts]);
+
+  /**
+   * Every time component renders, check if the store exists, else, do a fetch
+   */
+  useEffect(() => {
+    if (gifts.length) {
+      setActualGift(gifts.find((item) => item.title.trim() === gift.trim()));
+    } else {
+      dispatch(fetchGifts());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!actualGift) return <LinearProgress />;
@@ -53,16 +73,35 @@ const GiftSingle = () => {
           />
         </Grid>
         <Grid item xs={12} sm={5} md={4} style={{ padding: "1rem" }}>
-          <Typography>Categoria</Typography>
-          <Typography>{actualGift.title}</Typography>
+          <Typography
+            variant="caption"
+            paragraph
+            component={Link}
+            to={`/categorias/${gift.category}`}
+            arial-label="categoria"
+            style={{
+              textTransform: "uppercase",
+              fontWeight: 700,
+              display: "block",
+            }}
+          >
+            {actualGift.category}
+          </Typography>
+          <Typography variant="h3" paragraph>
+            {actualGift.title}
+          </Typography>
+          <Typography paragraph>{actualGift.description}</Typography>
           <Box
             display="flex"
             alignItems="center"
             justifyContent="space-between"
           >
-            <Typography>R$ {actualGift.price}</Typography>
+            <Typography variant="h6">
+              {toCurrencyFormat(actualGift.price)}
+            </Typography>
             <Button
               variant="contained"
+              color="primary"
               disableElevation
               onClick={() => dispatch(addGift(actualGift))}
             >
