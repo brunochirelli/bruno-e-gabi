@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   Box,
@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@material-ui/core";
 
-import { cleanCart } from "../redux/cart/cartSlice";
+import { cleanCart, processOrder } from "../redux/cart/cartSlice";
 
 /**
  * Checkout Page
@@ -19,23 +19,26 @@ import { cleanCart } from "../redux/cart/cartSlice";
  * @description   Page checkout tha handles information and redux logic to
  *                proccess the cart
  *
+ *  This pages contains some mock logic that is only useful in development.
+ *
+ *! The production logic should process de cart and send to the payment gateway
+ *  and operate the given result. Pay attention to it!
+ *
  */
 
 const Checkout = () => {
-  const [order, setOrder] = useState(false);
-  // const order = useSelector((state) => state.cart.orderPlace)
+  const order = useSelector((state) => state.cart.orderPlaced);
   const history = useHistory();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (order) history.push("/obrigado");
-  }, [order]);
-
-  useEffect(() => {
     setTimeout(() => {
       dispatch(cleanCart());
-      setOrder(true);
+      dispatch(processOrder());
+      history.push("/obrigado");
     }, 5000);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
