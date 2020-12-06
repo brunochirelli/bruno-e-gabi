@@ -26,6 +26,14 @@ import {
 } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 
+/**
+ * Login Page
+ *
+ * @version       0.1.0
+ * @description   Portal to login families
+ *
+ */
+
 const GuestsLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
