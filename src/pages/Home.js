@@ -69,7 +69,7 @@ const Home = () => {
           size="large"
           style={{ margin: "0.5rem auto" }}
           component={Link}
-          to="/portal"
+          to="/familia"
         >
           Confirmar Presença
         </Button>
