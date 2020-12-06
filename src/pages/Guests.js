@@ -3,6 +3,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import GuestCard from "../components/guests/GuestCard";
 
+/**
+ * Guests Confirmation Page
+ *
+ * @version       0.1.0
+ * @description   Page to hold each guest information and confirmation status
+ *
+ */
+
 const Guests = () => {
   const [thanksMessage, setThanksMessage] = useState(null);
   const [helper, setHelper] = useState(false);
@@ -102,6 +110,7 @@ const Guests = () => {
         />
       ))}
       {helper ? (
+        // TODO Check if family already bought a gift
         <Box margin="2rem auto">
           <Typography variant="h6">
             Compre o presente com mais praticidade
