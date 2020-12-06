@@ -1,6 +1,7 @@
 import { unstable_createMuiStrictModeTheme as createMuiTheme } from "@material-ui/core";
 
 const colorPrimary = "#666360";
+const colorSecondary = "#bb5252";
 const cardo = "'Cardo', serif";
 const epilogue = "'Epilogue', sans-serif";
 
@@ -8,6 +9,9 @@ export const defaultTheme = createMuiTheme({
   palette: {
     primary: {
       main: colorPrimary,
+    },
+    secondary: {
+      main: colorSecondary,
     },
 
     background: {
