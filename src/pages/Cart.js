@@ -11,7 +11,6 @@ import CartHelperLink from "../components/cart/CartHelperLink";
 /**
  * Cart Page
  *
- * @component
  * @version       0.1.0
  * @description   Map all Cart Items and proceed checkout
  *
