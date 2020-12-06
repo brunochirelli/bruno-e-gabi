@@ -16,6 +16,14 @@ import { getLastCategoryItem } from "../utils/getLastCategoryItem";
 
 import homeImg from "./home.svg";
 
+/**
+ * Home Page
+ *
+ * @version       0.1.0
+ * @description   Home Page content
+ *
+ */
+
 const Home = () => {
   const dispatch = useDispatch();
   const gifts = useSelector((state) => state.gifts.products);
@@ -60,6 +68,8 @@ const Home = () => {
           disableElevation
           size="large"
           style={{ margin: "0.5rem auto" }}
+          component={Link}
+          to="/portal"
         >
           Confirmar Presença
         </Button>
