@@ -11,6 +11,7 @@ import Layout from "./components/layout/Layout";
 import NotFound from "./pages/NotFound";
 import Guests from "./pages/Guests";
 import GuestsLogin from "./pages/GuestsLogin";
+import PrivateRoute from "./routes/PrivateRoute";
 
 const App = () => {
   return (
@@ -18,7 +19,12 @@ const App = () => {
       <Layout>
         <Switch>
           <Route exact path="/portal" component={GuestsLogin} />
-          <Route exact path="/familia" component={Guests} />
+          <PrivateRoute
+            exact
+            path="/familia"
+            component={Guests}
+            destination="/familia"
+          />
           <Route exact path="/presentes" component={Gifts} />
           <Route exact path="/presentes/:gift" component={GiftSingle} />
           <Route
@@ -27,7 +33,12 @@ const App = () => {
             component={CategorySingle}
           />
           <Route exact path="/carrinho" component={Cart} />
-          <Route exact path="/checkout" component={Checkout} />
+          <PrivateRoute
+            exact
+            path="/checkout"
+            component={Checkout}
+            destination="/checkout"
+          />
           <Route exact path="/obrigado" component={ThankYou} />
           <Route exact path="/" component={Home} />
           <Route component={NotFound} />
