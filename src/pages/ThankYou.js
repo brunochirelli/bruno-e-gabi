@@ -1,4 +1,5 @@
 import { Box, Button, Container, Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 /**
  * Thank Yout Page
@@ -25,7 +26,13 @@ const ThankYou = () => {
           agora?
         </Typography>
         <Box display="flex" justifyContent="center" marginY={3}>
-          <Button variant="contained" color="primary" disableElevation>
+          <Button
+            variant="contained"
+            color="primary"
+            disableElevation
+            component={Link}
+            to="/portal"
+          >
             Confirmar presença
           </Button>
         </Box>
