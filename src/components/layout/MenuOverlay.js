@@ -45,7 +45,7 @@ const MenuOverlay = ({ open, setOpen }) => {
             </Typography>
           </ListItem>
           <ListItem>
-            <Typography variant="h5" component={Link} to="/portal">
+            <Typography variant="h5" component={Link} to="/familia">
               Presença
             </Typography>
           </ListItem>
