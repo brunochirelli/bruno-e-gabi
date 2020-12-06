@@ -2,20 +2,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import {
-  Box,
-  Button,
-  Container,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Paper,
-  Typography,
-} from "@material-ui/core";
+import { Box, Button, Container, Typography } from "@material-ui/core";
 
 import GuestCard from "../components/guests/GuestCard";
 import { toggleConfirmation } from "../redux/guests/guestsSlice";
+import GuestConfirmationDialog from "../components/guests/GuestConfirmationDialog";
 
 /**
  * Guests Confirmation Page
@@ -35,6 +26,7 @@ const Guests = () => {
   const handleConfirmation = (id) => dispatch(toggleConfirmation(id));
 
   useEffect(() => {
+    // bottom helper message
     let findOne = family.members.find((member) => member.confirmed === true);
     if (!!findOne) {
       setHelper(true);
@@ -42,6 +34,7 @@ const Guests = () => {
       setHelper(false);
     }
 
+    // dialog handler
     let findAll = family.members.filter((member) => member.confirmed === true);
     if (findAll.length === family.members.length) {
       setOpenDialog(true);
@@ -50,38 +43,16 @@ const Guests = () => {
     }
   }, [family]);
 
+  /**
+   * If every member was confirmed, prevent the initial modal open
+   */
+  useEffect(() => {
+    setOpenDialog(false);
+  }, []);
+
   return (
     <Container maxWidth="sm" style={{ margin: "6rem auto" }}>
-      <Dialog
-        open={openDialog}
-        onClose={() => setOpenDialog(false)}
-        aria-describedby="Dialog de agradecimento"
-      >
-        <Paper>
-          <DialogTitle>Oba! Obrigado por confirmarem presença</DialogTitle>
-          <DialogContent>
-            <Typography paragraph>
-              Agora que confirmou presença, que tal comprar o presente por aqui
-              mesmo?
-            </Typography>
-            <Typography paragraph>
-              Veja nossa lista de presentes e compre algo sem precisar sair de
-              casa.
-            </Typography>
-          </DialogContent>
-          <DialogActions>
-            <Button
-              variant="contained"
-              color="primary"
-              disableElevation
-              component={Link}
-              to="/presentes"
-            >
-              Comprar presentes
-            </Button>
-          </DialogActions>
-        </Paper>
-      </Dialog>
+      <GuestConfirmationDialog open={openDialog} setOpen={setOpenDialog} />
 
       <Box marginBottom={4}>
         <Typography variant="h3">Família {family.name}</Typography>
@@ -95,8 +66,6 @@ const Guests = () => {
         </Typography>
       </Box>
 
-      {console.log(family)}
-
       {family.members.map((member) => (
         <GuestCard
           guest={member}
@@ -106,7 +75,6 @@ const Guests = () => {
       ))}
 
       {helper ? (
-        // TODO Check if family already bought a gift
         <Box margin="2rem auto">
           <Typography variant="h6">
             Compre o presente com mais praticidade
