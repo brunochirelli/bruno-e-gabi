@@ -58,10 +58,20 @@ export const cartSlice = createSlice({
 
       updateTotal(state);
     },
+
     removeGift: (state, action) => {
       const id = action.payload;
       state.products = state.products.filter((product) => product.id !== id);
     },
+
+    processOrder: (state, action) => {
+      /**
+       * This is just an example
+       * The real production case should do a asyncThunk in extraReducers
+       */
+      state.orderPlaced = true;
+    },
+
     cleanCart: (state) => {
       state.products = [];
       state.total = 0;
@@ -77,6 +87,7 @@ export const {
   addGift,
   updateQuantity,
   removeGift,
+  processOrder,
   cleanCart,
 } = cartSlice.actions;
 
