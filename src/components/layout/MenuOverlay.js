@@ -26,6 +26,8 @@ const MenuOverlay = ({ open, setOpen }) => {
   useEffect(() => {
     // When location updates, close menu
     setOpen(false);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   return (
@@ -40,6 +42,11 @@ const MenuOverlay = ({ open, setOpen }) => {
           <ListItem>
             <Typography variant="h5" component={Link} to="/">
               Home
+            </Typography>
+          </ListItem>
+          <ListItem>
+            <Typography variant="h5" component={Link} to="/portal">
+              Presença
             </Typography>
           </ListItem>
           <ListItem>
@@ -69,6 +76,11 @@ const FancyOverlay = styled(Box)`
     color: ${({ theme }) => theme.palette.primary.main};
     font-size: 2rem;
     text-decoration: none;
+    transition: 0.18s all ease;
+
+    &:hover {
+      color: pink;
+    }
   }
 
   @media screen and (min-width: 600px) {
@@ -76,7 +88,8 @@ const FancyOverlay = styled(Box)`
   }
 
   @media screen and (min-width: 900px) {
-    width: 40vw;
+    width: 30vw;
+    padding: 2rem;
   }
 `;
 
