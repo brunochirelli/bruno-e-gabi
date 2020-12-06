@@ -1,5 +1,6 @@
 import { Box, Button, Container, Typography } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
 
 /**
  * Thank Yout Page
@@ -11,6 +12,20 @@ import { Link } from "react-router-dom";
  */
 
 const ThankYou = () => {
+  const family = useSelector((state) => state.guests.family);
+  const orderIsSuccesful = useSelector((state) => state.cart.orderPlaced);
+
+  /** Check if family has any member confirmed */
+  const findOneConfirmed = () => {
+    if (family.members) {
+      return family.members.find((member) => member.confirmed === true);
+    } else {
+      return false;
+    }
+  };
+
+  if (!orderIsSuccesful) return <div>Não foi processado</div>;
+
   return (
     <Box marginY={20}>
       <Container maxWidth="sm">
@@ -21,19 +36,35 @@ const ThankYou = () => {
         >
           Seu pedido foi confirmado!
         </Typography>
-        <Typography variant="h6" align="center">
-          Parece que você ainda não confirmou presença, gostaria de fazer isso
-          agora?
-        </Typography>
+        {!findOneConfirmed() && (
+          <>
+            <Typography variant="h6" align="center">
+              Parece que você ainda não confirmou presença, gostaria de fazer
+              isso agora?
+            </Typography>
+            <Box display="flex" justifyContent="center" marginY={3}>
+              <Button
+                variant="contained"
+                color="primary"
+                disableElevation
+                component={Link}
+                to="/familia"
+              >
+                Confirmar presença
+              </Button>
+            </Box>
+          </>
+        )}
+
         <Box display="flex" justifyContent="center" marginY={3}>
           <Button
             variant="contained"
             color="primary"
             disableElevation
             component={Link}
-            to="/portal"
+            to="/"
           >
-            Confirmar presença
+            Voltar a home
           </Button>
         </Box>
       </Container>
