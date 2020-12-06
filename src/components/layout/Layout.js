@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Button, Link } from "@material-ui/core";
 
 import Header from "./Header";
+import Footer from "./Footer";
 
 /**
  * Default Layout
@@ -37,6 +38,7 @@ const Layout = ({ children }) => {
       <main style={{ marginTop: headerHeight + "px" }} id="main">
         {children}
       </main>
+      {/* <Footer /> */}
     </>
   );
 };
