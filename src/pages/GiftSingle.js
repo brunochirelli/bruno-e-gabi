@@ -77,7 +77,7 @@ const GiftSingle = () => {
             variant="caption"
             paragraph
             component={Link}
-            to={`/categorias/${gift.category}`}
+            to={`/categorias/${actualGift.category}`}
             arial-label="categoria"
             style={{
               textTransform: "uppercase",
