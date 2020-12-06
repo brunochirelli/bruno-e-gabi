@@ -40,7 +40,7 @@ export const guestsSlice = createSlice({
     },
     toggleConfirmation: (state, action) => {
       const id = action.payload;
-      const updatedMembers = state.members.map((member) => {
+      const updatedMembers = state.family.members.map((member) => {
         if (member.id === id) {
           member.confirmed = !member.confirmed;
           return member;
