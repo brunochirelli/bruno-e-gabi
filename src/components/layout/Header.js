@@ -26,7 +26,7 @@ import MenuOverlay from "./MenuOverlay";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(true);
 
   const cart = useSelector((state) => state.cart);
 
@@ -51,9 +51,19 @@ const Header = () => {
 
   return (
     <>
-      <AppBar position="fixed" elevation={0} color="inherit" id="main-header">
+      <AppBar
+        position="fixed"
+        elevation={0}
+        color="inherit"
+        id="main-header"
+        data-testid="logo"
+      >
         <Toolbar style={{ justifyContent: "space-between" }}>
-          <IconButton onClick={() => setMenuOpen(true)}>
+          <IconButton
+            className={open ? "menu-open" : "menu-hidden"}
+            onClick={() => setMenuOpen(true)}
+            data-testid="overlay-menu"
+          >
             <Menu />
           </IconButton>
           <MenuOverlay open={menuOpen} setOpen={setMenuOpen} />
@@ -64,7 +74,7 @@ const Header = () => {
             to="/"
             style={{ color: "black", textDecoration: "none" }}
           >
-            Gabi e Bruno
+            Gabi e Bruninho
           </Typography>
 
           {location.pathname === "/carrinho" ||
@@ -81,6 +91,7 @@ const Header = () => {
                 }
               >
                 <Badge
+                  data-testid="cart"
                   badgeContent={cart.products && cart.products.length}
                   color="primary"
                 >
