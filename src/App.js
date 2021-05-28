@@ -12,8 +12,13 @@ import NotFound from "./pages/NotFound";
 import Guests from "./pages/Guests";
 import GuestsLogin from "./pages/GuestsLogin";
 import PrivateRoute from "./routes/PrivateRoute";
+import { getChar } from "./utils/getData";
+import { useEffect } from "react";
 
 const App = () => {
+  useEffect(() => {
+    getChar();
+  }, []);
   return (
     <Router>
       <Layout>
